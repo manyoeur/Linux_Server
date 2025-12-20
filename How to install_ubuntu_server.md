@@ -1,4 +1,4 @@
-# How to install Ubuntu server
+# How to install Ubuntu server 24.04 LTS
 ## Software requirements
 * Ubuntu Server
 * Hypervisor (Microsoft Hyper-V, VMware workstation/player, Virtualbox)
@@ -18,3 +18,18 @@ Step 8. Skip proxy server configuration
 <img width="1530" height="1154" alt="image" src="https://github.com/user-attachments/assets/65cd92cc-a2bc-4b38-85e0-ddb1045bcaff" />
 Step 9. Mirror configuration
 <img width="1535" height="1147" alt="image" src="https://github.com/user-attachments/assets/a58ff36e-2bee-4e6a-8767-0b70f4fb1772" />
+Step 10. Disk configuration
+<img width="1532" height="1145" alt="image" src="https://github.com/user-attachments/assets/91262256-d9fc-490d-b5fe-fb362041c199" />
+Step 11. Storage configuration skip default
+<img width="1533" height="1146" alt="image" src="https://github.com/user-attachments/assets/4998bd09-772b-458c-b60c-5ad7bc128923" />
+Step 12. Storage configuration select "Continue"
+<img width="1530" height="1157" alt="image" src="https://github.com/user-attachments/assets/a994483d-ce8d-4552-a64f-060ee6c53c65" />
+Step 13. Set your profile name
+<img width="1525" height="1153" alt="image" src="https://github.com/user-attachments/assets/5c5334b1-64a0-4beb-b144-1f9dc83eb8ee" />
+Step 14. skip upgrade to Ubuntu Pro
+<img width="1537" height="1149" alt="image" src="https://github.com/user-attachments/assets/0ac98f4a-4bd3-4206-b148-31b2f642c10f" />
+Step 15. Enable SSH configuration
+<img width="1529" height="1144" alt="image" src="https://github.com/user-attachments/assets/e76040e4-9344-4789-ba33-a1d0c074ecdc" />
+Step 16. Keep blank for feature server snap
+<img width="1532" height="1157" alt="image" src="https://github.com/user-attachments/assets/b6c31e34-434a-4902-850f-8ba8adac6a3a" />
+Step 17. 
