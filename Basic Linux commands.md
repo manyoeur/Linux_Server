@@ -28,7 +28,7 @@ Canceling a Scheduled Shutdown
 ```
 sudo shutdown -c
 ```
-### Reboot system
+### 4. Reboot system
 ```
 sudo init 6
 ```
