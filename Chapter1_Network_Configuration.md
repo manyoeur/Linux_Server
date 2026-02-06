@@ -21,6 +21,55 @@ These commands are used for setting up and modifying network interfaces, address
 * ```hostnamectl set-hostname [new_hostname]```: A modern command to control the system hostname with systemd.
 
 * ```nmcli```: A command-line client for NetworkManager, a dynamic network management daemon, often used on desktop and server systems to manage connections interactively. 
+# Shutdown Linux command line
+Shutdown Linux from the Command Line
+```
+sudo shutdown now
+```
+Shutdown at a specific time (e.g., 1 minute from now)
+```
+sudo shutdown +1
+```
+Shutdown at a specific clock time (shutdown at 10:30 PM)
+```
+sudo shutdown 22:30
+```
+Power off the system immediately
+```
+sudo poweroff
+```
+ Use systemctl (modern method)
+ ```
+sudo systemctl poweroff
+```
+Halt the system (stop CPU, no power off)
+```
+sudo halt
+```
+Shutdown in old system
+```
+sudo init 0
+```
+# How to reboot Linux system
+```
+sudo reboot
+```
+Using the systemd method
+```
+sudo systemctl reboot
+```
+Reboot now using shutdown command
+```
+sudo shutdown -r now
+```
+Schedule a reboot (example: reboot in 5 minutes)
+```
+sudo shutdown -r +5
+```
+ Cancel a scheduled reboot
+ ```
+sudo shutdown -c
+```
 
 ## Set static IP address in Ubuntu
 Open the Netplan Configuration File
