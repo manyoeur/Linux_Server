@@ -64,7 +64,6 @@ sudo netplan apply
 ```
 Verify the IP Address
 ```
-
 ip a
 ip route
 systemd-resolve --status
