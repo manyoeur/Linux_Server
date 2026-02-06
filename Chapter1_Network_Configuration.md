@@ -68,3 +68,30 @@ ip a
 ip route
 systemd-resolve --status
 ```
+## Enable DHCPv4 on Ubuntu 24.04 Server
+Check your network interface name
+```
+ip a
+```
+On Ubuntu Server, the common file is:
+```
+sudo nano /etc/netplan/50-cloud-init.yaml
+```
+Set DHCPv4 to true
+```
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      dhcp4: true
+```
+If you previously had a static IP, remove or comment out:
+* addresses:
+* gateway4:
+* nameservers:
+Apply the configuration
+```
+sudo netplan apply
+```
