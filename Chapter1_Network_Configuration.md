@@ -24,3 +24,16 @@ These commands are used for setting up and modifying network interfaces, address
 
 * ```nmcli```: A command-line client for NetworkManager, a dynamic network management daemon, often used on desktop and server systems to manage connections interactively. 
 
+## Set static IP address in Ubuntu
+Open the Netplan Configuration File
+Common locations:
+* /etc/netplan/01-network-manager-all.yaml (desktop)
+* /etc/netplan/50-cloud-init.yaml (server)
+* /etc/netplan/*.yaml
+```
+ls /etc/netplan
+```
+Open the file in a text editor:
+```
+sudo nano /etc/netplan/01-network-manager-all.yaml
+```
