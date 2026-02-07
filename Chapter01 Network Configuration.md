@@ -122,7 +122,6 @@ sudo systemctl restart NetworkManager
 ```
 ### Verify Your Static IP
 ```
-
 ip a
 nmcli dev show
 ```
