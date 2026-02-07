@@ -94,4 +94,36 @@ Then:
 ```
 sudo systemctl restart NetworkManager
 ```
+## Method 2: Using nmcli (CLI Command)
+Location:
+```
+/etc/sysconfig/network-scripts/ifcfg-<interface-name>
+```
+Example (ifcfg-ens33):
+```
+TYPE=Ethernet
+BOOTPROTO=none
+NAME=ens33
+DEVICE=ens33
+ONBOOT=yes
+IPADDR=192.168.1.100
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+DNS2=1.1.1.1
+```
+Save and restart:
+``
+sudo systemctl restart network
+```
+(or for newer systems)
+```
+sudo systemctl restart NetworkManager
+```
+### Verify Your Static IP
+```
+
+ip a
+nmcli dev show
+```
 
