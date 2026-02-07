@@ -41,7 +41,7 @@ ip a
 ip route
 systemd-resolve --status
 ```
-# Enable DHCPv4 on Ubuntu 24.04 Server
+# Enable DHCPv4 client on Ubuntu
 Check your network interface name
 ```
 ip a
