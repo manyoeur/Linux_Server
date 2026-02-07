@@ -91,4 +91,7 @@ Then:
 6.Save and quit
 
 7.Restart network:
+```
+sudo systemctl restart NetworkManager
+```
 
