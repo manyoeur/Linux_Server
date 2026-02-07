@@ -87,5 +87,8 @@ Then:
 * Gateway: 192.168.1.1
 
 5.Add DNS server(s): 8.8.8.8, 1.1.1.1
+
 6.Save and quit
+
 7.Restart network:
+
