@@ -143,3 +143,98 @@ Test reverse lookup:
 dig @192.168.1.10 -x 192.168.1.10
 ```
 If you see ANSWER SECTION → DNS is working.
+#  How to Configure DNS Slave Server
+##  1. Install BIND on Slave Server
+```
+sudo yum install bind bind-utils -y
+```
+Enable and start it:
+```
+
+sudo systemctl enable named
+sudo systemctl start named
+```
+## 2. Configure the Slave DNS Zone
+Edit zone configuration:
+```
+sudo nano /etc/named.rfc1912.zones
+```
+Add:
+```
+
+zone "example.com" IN {
+    type slave;
+    masters { 192.168.1.10; };     // IP of Master DNS
+    file "slaves/example.com.zone";
+};
+```
+Create the slave directory:
+```
+
+sudo mkdir -p /var/named/slaves
+sudo chown named:named /var/named/slaves
+```
+## IMPORTANT
+The Master DNS must allow zone transfers to this slave IP.
+Otherwise the slave will fail to load the zone.
+
+## 3. Configure the Master DNS to Allow Zone Transfer
+On the Master server, edit:
+```
+sudo nano /etc/named.rfc1912.zones
+```
+Modify master zone like this:
+```
+zone "example.com" IN {
+    type master;
+    file "example.com.zone";
+    allow-transfer { 192.168.1.20; };   // Slave DNS IP
+    also-notify { 192.168.1.20; };      // Optional: push changes
+};
+```
+Restart master DNS:
+```
+sudo systemctl restart named
+```
+## 4. Allow DNS Traffic Through Firewall (On Slave)
+```
+
+sudo firewall-cmd --add-service=dns --permanent
+sudo firewall-cmd --reload
+```
+Allow zone‑transfer port TCP 53:
+```
+
+sudo firewall-cmd --add-port=53/tcp --permanent
+sudo firewall-cmd --reload
+```
+##  5. Restart BIND on Slave Server
+```
+sudo systemctl restart named
+```
+Check logs to confirm zone transfer:
+```
+sudo tail -f /var/log/message
+```
+You should see something like:
+```
+transfer of 'example.com' from 192.168.1.10#53: Transfer completed
+```
+Zone file should appear in:
+```
+/var/named/slaves/example.com.zone
+```
+##  6. Test DNS Slave Functionality
+Test query from slave:
+```
+dig @192.168.1.20 example.com
+```
+Check zone file exists:
+```
+ls -l /var/named/slaves/
+```
+Test slave responds properly:
+```
+dig @192.168.1.20 www.example.com
+```
+If you see ANSWER SECTION, the slave DNS is fully working.
