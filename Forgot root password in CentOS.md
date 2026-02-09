@@ -3,4 +3,6 @@
 * Restart the server or VM.
 
 <b>Step 2 — Interrupt GRUB</b>
+
 When you see the GRUB boot menu:
+* Press <b>e</b> to edit the default boot entry.
