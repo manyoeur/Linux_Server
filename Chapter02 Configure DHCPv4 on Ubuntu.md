@@ -43,7 +43,7 @@ authoritative;
 
 # Subnet configuration
 subnet 192.168.1.0 netmask 255.255.255.0 {
-    range 192.168.1.10 192.168.10.200;
+    range 192.168.1.10 192.168.1.200;
     option routers 192.168.1.1;
     option subnet-mask 255.255.255.0;
     option domain-name-servers 8.8.8.8, 1.1.1.1;
