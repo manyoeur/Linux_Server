@@ -94,10 +94,15 @@ sudo nmtui
 Then:
 
 1.Select Edit a connection
+<img width="957" height="601" alt="image" src="https://github.com/user-attachments/assets/24c21b85-12c7-4929-9b88-68d1f714b633" />
 
 2.Choose your interface (e.g., eth0 or ens33)
 
+<img width="947" height="596" alt="image" src="https://github.com/user-attachments/assets/d8e89943-cb2b-4c2e-9088-bcec8bc0ee70" />
+
+
 3.Set IPv4 CONFIGURATION to Manual
+<img width="931" height="570" alt="image" src="https://github.com/user-attachments/assets/6e8be724-7bf3-40a8-98fd-922e28485610" />
 
 4.Enter:
 
