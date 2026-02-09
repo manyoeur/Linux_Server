@@ -1,3 +1,22 @@
+# Check Network Interface
+See active interfaces:
+```
+ip addr
+```
+or
+```
+ifconfig
+```
+(If ifconfig not found → install net-tools)
+## Check Current Network Configuration
+```
+ip a
+ip r
+cat /etc/resolv.conf
+```
+* ip a → shows IP addresses
+* ip r → shows routing table (default gateway)
+* resolv.conf → shows DNS servers
 # Set static IP address in Ubuntu
 Open the Netplan Configuration File
 Common locations:
