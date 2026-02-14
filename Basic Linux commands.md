@@ -31,7 +31,16 @@ These commands are used for setting up and modifying network interfaces, address
 
 * ```hostnamectl set-hostname [new_hostname]```: A modern command to control the system hostname with systemd.
 
-* ```nmcli```: A command-line client for NetworkManager, a dynamic network management daemon, often used on desktop and server systems to manage connections interactively. 
+* ```nmcli```: A command-line client for NetworkManager, a dynamic network management daemon, often used on desktop and server systems to manage connections interactively.
+* To change hostname
+```
+sudo nano /etc/hosstname
+```
+Then restart system
+```
+init 6
+```
+
 # Shutdown Linux command line
 Shutdown Linux from the Command Line
 ```
