@@ -1,5 +1,7 @@
 # How to Setup DNS Server on CentOS
-## 1. Install BIND (DNS Server Software)
+<img width="895" height="1082" alt="image" src="https://github.com/user-attachments/assets/10fd366c-c097-4969-b727-e06cdebe7fe8" />
+
+## 1️⃣. Install BIND (DNS Server Software)
 Update packages:
 ```
 sudo yum update -y
@@ -17,7 +19,7 @@ Check status:
 ```
 sudo systemctl status named
 ```
-## 2. Configure BIND Primary Zone
+## 2️⃣ Configure BIND Primary Zone
 Edit the main configuration file:
 ```
 sudo nano /etc/named.conf
@@ -34,7 +36,7 @@ options {
 };
 ```
 Save and exit.
-##  3. Define Your DNS Zone
+##  3️⃣ Define Your DNS Zone
 ```
 sudo nano /etc/named.rfc1912.zones
 ```
@@ -47,7 +49,7 @@ zone "example.com" IN {
     allow-update { none; };
 };
 ```
-## 4. Create Zone File
+## 4️⃣ Create Zone File
 Create the zone file in /var/named/:
 ```
 sudo nano /var/named/example.com.zone
@@ -76,7 +78,7 @@ Set correct permissions:
 sudo chown root:named /var/named/example.com.zone
 sudo chmod 640 /var/named/example.com.zone
 ```
-## 5. (Optional) Create Reverse DNS Zone
+## 5️⃣ (Optional) Create Reverse DNS Zone
 Edit configuration:
 ```
 sudo nano /etc/named.rfc1912.zones
@@ -107,7 +109,7 @@ $TTL 86400
 @     IN  NS    ns1.example.com.
 10    IN  PTR   example.com.
 ```
-## 6. Check Configuration for Errors
+## 6️⃣ Check Configuration for Errors
 Check named.conf:
 ```
 sudo named-checkconf
@@ -119,7 +121,7 @@ sudo named-checkzone example.com /var/named/example.com.zone
 sudo named-checkzone 1.168.192.in-addr.arpa /var/named/192.168.1.rev
 ```
 If both say OK, continue.
-## 7. Restart BIND
+## 7️⃣ Restart BIND
 ```
 sudo systemctl restart named
 ```
@@ -129,7 +131,7 @@ Allow DNS through firewall:
 sudo firewall-cmd --add-service=dns --permanent
 sudo firewall-cmd --reload
 ```
-## 8. Test DNS
+## 8️⃣ Test DNS
 Test A record:
 ```
 dig @192.168.1.10 example.com
@@ -143,7 +145,9 @@ Test reverse lookup:
 dig @192.168.1.10 -x 192.168.1.10
 ```
 If you see ANSWER SECTION → DNS is working.
+
 #  How to Configure DNS Slave Server
+
 ##  1. Install BIND on Slave Server
 ```
 sudo yum install bind bind-utils -y
