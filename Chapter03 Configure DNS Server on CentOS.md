@@ -43,9 +43,9 @@ sudo nano /etc/named.rfc1912.zones
 Add your domain zone (example: yoeur_name.com):
 ```
 
-zone "example.com" IN {
+zone "yoeur_name.com" IN {
     type master;
-    file "example.com.zone";
+    file "yoeur_name.com.zone";
     allow-update { none; };
 };
 ```
