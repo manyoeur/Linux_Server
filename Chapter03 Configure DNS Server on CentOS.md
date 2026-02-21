@@ -40,7 +40,7 @@ Save and exit.
 ```
 sudo nano /etc/named.rfc1912.zones
 ```
-Add your domain zone (example: example.com):
+Add your domain zone (example: yoeur_name.com):
 ```
 
 zone "example.com" IN {
@@ -52,12 +52,12 @@ zone "example.com" IN {
 ## 4️⃣ Create Zone File
 Create the zone file in /var/named/:
 ```
-sudo nano /var/named/example.com.zone
+sudo nano /var/named/yoeur_name.com.zone
 ```
 Paste the template below (modify domain & IP):
 ```
 $TTL 86400
-@   IN  SOA ns1.example.com. admin.example.com. (
+@   IN  SOA ns1.yoeur_name.com. admin.yoeur_name.com. (
         2024020101  ; Serial
         3600        ; Refresh
         1800        ; Retry
@@ -65,7 +65,7 @@ $TTL 86400
         86400 )     ; Minimum TTL
 
 ; Name servers
-@       IN  NS      ns1.example.com.
+@       IN  NS      ns1.yoeur_name.com.
 
 ; A records
 ns1     IN  A       192.168.1.2
@@ -75,8 +75,8 @@ www     IN  A       192.168.1.2
 Set correct permissions:
 ```
 
-sudo chown root:named /var/named/example.com.zone
-sudo chmod 640 /var/named/example.com.zone
+sudo chown root:named /var/named/yoeur_name.com.zone
+sudo chmod 640 /var/named/yoeur_name.com.zone
 ```
 ## 5️⃣ (Optional) Create Reverse DNS Zone
 Edit configuration:
@@ -99,7 +99,7 @@ sudo nano /var/named/192.168.1.rev
 Example:
 ```
 $TTL 86400
-@   IN  SOA ns1.example.com. admin.example.com. (
+@   IN  SOA ns1.yoeur_name.com. admin.yoeur_name.com. (
         2024020101
         3600
         1800
@@ -117,7 +117,7 @@ sudo named-checkconf
 Check your zone files:
 ```
 
-sudo named-checkzone example.com /var/named/example.com.zone
+sudo named-checkzone yoeur_name.com /var/named/yoeur_name.com.zone
 sudo named-checkzone 1.168.192.in-addr.arpa /var/named/192.168.1.rev
 ```
 If both say OK, continue.
@@ -134,11 +134,11 @@ sudo firewall-cmd --reload
 ## 8️⃣ Test DNS
 Test A record:
 ```
-dig @192.168.1.2 example.com
+dig @192.168.1.2 yoeur_name.com
 ```
 Test www:
 ```
-dig @192.168.1.2 www.example.com
+dig @192.168.1.2 www.yoeur_name.com
 ```
 Test reverse lookup:
 ```
