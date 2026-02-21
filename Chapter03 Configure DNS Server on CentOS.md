@@ -28,9 +28,9 @@ Change listen-on and allow-query so your server can answer DNS queries:
 ```
 
 options {
-    listen-on port 53 { any; };
+    listen-on port 53 { any;192.168.1.2; };
     listen-on-v6 port 53 { any; };
-    allow-query     { any; };
+    allow-query     { any;192.168.1.0/24; };
 
     recursion yes;
 };
@@ -68,9 +68,9 @@ $TTL 86400
 @       IN  NS      ns1.example.com.
 
 ; A records
-ns1     IN  A       192.168.1.10
-@       IN  A       192.168.1.10
-www     IN  A       192.168.1.10
+ns1     IN  A       192.168.1.2
+@       IN  A       192.168.1.2
+www     IN  A       192.168.1.2
 ```
 Set correct permissions:
 ```
@@ -107,7 +107,7 @@ $TTL 86400
         86400 )
 
 @     IN  NS    ns1.example.com.
-10    IN  PTR   example.com.
+2    IN  PTR   example.com.
 ```
 ## 6️⃣ Check Configuration for Errors
 Check named.conf:
@@ -134,15 +134,15 @@ sudo firewall-cmd --reload
 ## 8️⃣ Test DNS
 Test A record:
 ```
-dig @192.168.1.10 example.com
+dig @192.168.1.2 example.com
 ```
 Test www:
 ```
-dig @192.168.1.10 www.example.com
+dig @192.168.1.2 www.example.com
 ```
 Test reverse lookup:
 ```
-dig @192.168.1.10 -x 192.168.1.10
+dig @192.168.1.2 -x 192.168.1.2
 ```
 If you see ANSWER SECTION → DNS is working.
 
@@ -168,7 +168,7 @@ Add:
 
 zone "example.com" IN {
     type slave;
-    masters { 192.168.1.10; };     // IP of Master DNS
+    masters { 192.168.1.2; };     // IP of Master DNS
     file "slaves/example.com.zone";
 };
 ```
@@ -222,7 +222,7 @@ sudo tail -f /var/log/message
 ```
 You should see something like:
 ```
-transfer of 'example.com' from 192.168.1.10#53: Transfer completed
+transfer of 'example.com' from 192.168.1.2#53: Transfer completed
 ```
 Zone file should appear in:
 ```
